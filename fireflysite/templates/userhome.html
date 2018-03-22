@@ -5,18 +5,22 @@
 
 <div id="map" style="width:100%; height: 400px; background-color: grey;"></div>
 <script>
+    window.onload = function(){
+        document.getElementById('second_map').style.display = 'none';
+    }
 
   function initMap() {
       var sensors = [
           ['Sensor ID : 1', 33.3237, -117.1630, fireindex, dates, 'Fire Index - Lilac (SanDiego)'],
-          ['Sensor ID : 2', 32.6972, -116.7985, thomasfireindex, thomasdates, 'Fire Index - Thomas']
+          ['Sensor ID : 2', 32.6972, -116.7985, thomasfireindex, thomasdates, 'Fire Index - Thomas (Ventura)']
     ]
     var latlng = {lat: 33.3237, lng: -117.1630};
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
+      zoom: 8,
       mapTypeId: 'satellite',
       center: latlng
     });
+    colourSet(sensors[0][3], sensors[0][4], sensors[0][5]);
     var marker, i;
     for (i=0; i<sensors.length; i++) {
             marker = new google.maps.Marker({
@@ -28,6 +32,13 @@
                 return function() {
                     console.log(i);
                     colourSet(sensors[i][3], sensors[i][4], sensors[i][5]);
+                    if(i==1){
+                        document.getElementById("second_map").style.display = "block";
+                        document.getElementById("first_map").style.display = "none";
+                     } else {
+                        document.getElementById("second_map").style.display = "none";
+                        document.getElementById("first_map").style.display = "block";
+                     }
                 }
               })(marker, i));
   }}
@@ -296,6 +307,9 @@
          });
      }
     </script>
+<div id="first_map"><iframe src="https://www.google.com/maps/d/embed?mid=12a75gCRQ0eIHSoXdtXF6d6RgMdgb9Izj&hl=en" width="100%" height="480"></iframe>
+    </div>
+    <div id="second_map"><iframe src="https://www.google.com/maps/d/embed?mid=1FfXrRUZmUmGP0EzeC9XUoofzAWQu3KKx&hl=en" width="100%" height="480"></iframe></div>
 </div>
 
 {% endblock %}
