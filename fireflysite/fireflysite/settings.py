@@ -127,6 +127,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+#Email
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
 # after login and logout go back to index
 LOGIN_REDIRECT_URL = '/fireflyapp'
 LOGOUT_REDIRECT_URL = '/fireflyapp'
