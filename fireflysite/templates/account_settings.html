@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+<!--{% load bootstrap4 %}-->
+
+{% block content %}
+
+<div class="container">
+    <div class="alert alert-primary" role="alert">
+        <strong>Name</strong> : {{user.first_name}} {{user.last_name}}
+        <hr>
+        <strong>Email</strong> : {{user.email}}
+        <hr>
+        <strong>A/C Type</strong> :
+            {% if user.is_superuser %}
+                Admin <i class="fas fa-user-secret"></i>
+            {% else %}
+                {% if is_member_basic == true %}
+                    Basic <i class="fas fa-user"></i>
+                {% else %}
+                    Pro <i class="fas fa-user-tie"></i>
+                {% endif %}
+            {% endif %}
+
+
+    </div>
+</div>
+
+{% endblock %}
