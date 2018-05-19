@@ -20,7 +20,7 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('fireflyapp/', include('fireflyapp.urls')),
+    path('', include('fireflyapp.urls')),
     path('accounts/', include('accounts.urls')),
     path('fireflyapp/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
