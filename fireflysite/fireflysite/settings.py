@@ -26,7 +26,7 @@ SECRET_KEY = 'cr2&134@91glo1*m^e%n&1_r(oj)2i7nabgja#(*n49ajol=v%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'locahost', 'fireflyproject.herokuapp.com']
 
 
 # Application definition
@@ -128,6 +128,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+# heroku staticfiles
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 #Email
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
