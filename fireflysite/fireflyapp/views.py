@@ -20,3 +20,6 @@ def is_member_basic(request):
 def user_account_settings(request):
     return render(request, "account_settings.html")
 
+
+def results(request):
+    return render(request, "results.html")

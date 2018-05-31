@@ -21,6 +21,8 @@
       <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
       <!--Places search API  -->
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk3-o1GS9v2wB0TcQJnkVcJUnEzNIHUEg&libraries=places,geometry"></script>
+      <!--jQuery  -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <!--Push content a bit down so navbar doesn't block it-->
       <style>
         body {
@@ -38,8 +40,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto mr-auto">
-                <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" id="search_location" type="search" placeholder="Location Name" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0" action="{% url 'results' %}" method="GET">
+                  <input class="form-control mr-sm-2" name="search_location" id="search_location" type="search" placeholder="Location Name" aria-label="Search">
+                  <input name="lat" id="lat" type="text" placeholder="Latitude" hidden>
+                  <input name="lng" id="lng" type="text" placeholder="Longitude" hidden>
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
               </ul>
@@ -86,9 +90,15 @@
                     var mesg = "Address: " + address;
                     mesg += "\nLatitude: " + latitude;
                     mesg += "\nLongitude: " + longitude;
+
+                    document.getElementById("lat").value = latitude;
+                    document.getElementById("lng").value = longitude;
+
                     alert(mesg);
                 });
             });
+
+
         </script>
     </body>
 

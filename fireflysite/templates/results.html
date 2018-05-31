@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<!--{% load static from staticfiles %}-->
+<!--{% load bootstrap4 %}-->
+
+{% block content %}
+
+<div class="container">
+    <p>
+        Place: {{ request.GET.search_location }} <br>
+        Lat: {{ request.GET.lat }} <br/>
+        Lng: {{ request.GET.lng }} <br/>
+    </p>
+
+    <button class="btn btn-primary" id="btnweather">Get Weather</button>
+
+    <p>
+        $.getJSON('https://crossorigin.me/https://api.darksky.net/forecast/0e11a7baa1b9cbff437b8b340f6cc132/{{ request.GET.lat }},{{ request.GET.lng }}', function(forecast)
+            {console.log(forecast)}
+        );
+    </p>
+</div>
+
+<script>
+    document.getElementById("btnweather").addEventListener("click", get_weather);
+
+    function get_weather(){
+        $.getJSON('https://crossorigin.me/https://api.darksky.net/forecast/0e11a7baa1b9cbff437b8b340f6cc132/{{ request.GET.lat }},{{ request.GET.lng }}', function(forecast)
+            {console.log("Hey")}
+        );
+        <!--alert("hey");-->
+    }
+
+</script>
+
+{% endblock %}
